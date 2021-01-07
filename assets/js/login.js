@@ -54,17 +54,16 @@ $(function() {
 
     // 注册登录事件
     $('#form-login').on('submit', function(e) {
-        var data = {
-            username: $('#form-login [name=username]').val(),
-            password: $('#form-login [name=password]').val()
-        }
+
         e.preventDefault();
-        $.post('/api/login', data,
+        $.post('/api/login', $(this).serialize(),
             function(res) {
                 if (res.status !== 0) {
                     return layer.msg(res.message)
                 }
                 layer.msg('登录成功');
+                // console.log(res.token);
+                localStorage.setItem('token', res.token)
                 location.href = '/index.html'
             })
     })
