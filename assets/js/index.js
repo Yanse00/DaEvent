@@ -18,7 +18,7 @@ $(function() {
 })
 
 
-// 获取用户信息
+// 获取用户基本信息
 function getUserInfo() {
     $.ajax({
         type: "GET",
